@@ -59,22 +59,7 @@ Grafiquemos la relación anterior:
 $$ R_{ldr} = R_0 \left(\frac{1024}{x} - 1\right).$$
 
 
-```julia
-using PyPlot
-
-x=(0:1024);
-R0=10e3;
-max_x = 1024.0;
-
-R = R0*(max_x./x - 1);
-
-plot(x,R);
-xlabel(L"$x$ (medida del conversor)");
-ylabel(L"$R_{ldr}$ (resistencia del LDR)");
-```
-
-
-![png](output_4_0.png)
+![png](figs/output_4_0.png)
 
 
 ## Escala logarítmica.
@@ -82,15 +67,7 @@ ylabel(L"$R_{ldr}$ (resistencia del LDR)");
 La gráfica anterior muestra que la relación entre $x$ y $R_{ldr}$ es altamente no lineal. Sin embargo, el LDR tiene una respesta logarítmica, por lo que nos interesa más ver qué ocurre con $\log(R_{ldr})$. Hagamos una nueva gráfica:
 
 
-```julia
-semilogy(x,R);
-xlabel(L"$x$ (medida del conversor)");
-ylabel(L"$R_{ldr}$ (resistencia del LDR, escala log)");
-grid()
-```
-
-
-![png](output_6_0.png)
+![png](figs/output_6_0.png)
 
 
 ## El rol de $R_0$.
@@ -144,25 +121,7 @@ $$ I = I_b \left(\frac{R_0}{R_b}\left(\frac{1024}{x} - 1\right)\right)^{-1/\gamm
 
 Grafiquemos lo anterior para $I_b=10$ lux, $R_0=10k$, $R_b=30k$ y $\gamma=0.7$:
 
-
-```julia
-Ib=10.0;
-R0=10e3;
-Rb=30e3;
-gamma=0.7;
-
-x=(0:1023);
-
-I=Ib*(R0/Rb*(1024.0./x - 1)).^(-1/gamma);
-
-semilogy(x,I);
-grid();
-xlabel(L"$x$ (medida del conversor)");
-ylabel(L"$I$ (intensidad en lux, escala log)");
-```
-
-
-![png](output_11_0.png)
+![png](figs/output_11_0.png)
 
 
 ## Ejemplos de intensidad luminosa (de Wikipedia).
